@@ -5,13 +5,24 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { makeStyles } from '@mui/styles';
 
+const useStyles = makeStyles({
+    root: {
+      width: "100%",
+      position: "fixed",
+      bottom: 0,
+      backgroundColor: "#2d313a",
+      zIndex: 100,
+    },
+  });
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
-
+  const classes = useStyles();
   return (
     <Box sx={{ width: 500 }}>
       <BottomNavigation
+       className={classes.root}
         showLabels
         value={value}
         onChange={(event, newValue) => {
