@@ -8,19 +8,22 @@ import Trending from './pages/Trending/Trending';
 import Search from './pages/Search/Search';
 import Movies from './pages/Movies/Movies';
 import Series from './pages/Series/Series';
-function App() {
+
+
+
+
+const App = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
         <div className="app">
-          <Container> 
+          <Container>
             <Routes>
               <Route path='/' element={<Trending />} />
-              
-              <Route path='/movies' element={<Movies />}/>
-              <Route path='series' element={<Series />}/>
-              <Route path='/search' element={<Search />}/>
+              <Route path='/movies' element={<Movies />} />
+              <Route path='/series' element={<Series />} />
+              <Route path='/search' element={<Search />} />
             </Routes>
           </Container>
         </div>
@@ -30,6 +33,29 @@ function App() {
     </>
 
   );
-}
+}; 
+
+// function App() {
+//   return (
+//     <>
+//       <BrowserRouter>
+//         <Header />
+//         <div className="app">
+//           <Container>
+//             <Routes>
+//               <Route path='/' element={<Trending />} />
+//               <Route path='/movies' element={<Movies />} />
+//               <Route path='/series' element={<Series />} />
+//               <Route path='/search' element={<Search />} />
+//             </Routes>
+//           </Container>
+//         </div>
+
+//         <SimpleBottomNavigation />
+//       </BrowserRouter>
+//     </>
+
+//   );
+// }
 
 export default App;
