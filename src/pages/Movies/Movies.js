@@ -7,26 +7,30 @@ import SingleContent from "../../components/SingleContent/SingleContent";
 function Movies() {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
-  const [numberOfPages, setNumberOfPages] = useState();
+  const [numOfPages, setNumberOfPages] = useState(1);
 
   const fetchMovies = async () => {
-    const  {data}  = await axios.get(
+    const { data } = await axios.get(
       `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`
     );
     console.log(data);
     setContent(data.results);
-    setNumberOfPages(data.total_pages)
+    setNumberOfPages(data.total_pages);
   };
-
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [page]);
+
+  useEffect(() => {
+    fetchMovies();
+  }, [numOfPages]);
+
 
   return (
     <div>
       <span className="pageTitle">Movies</span>
-      
+
       <div className="trending">
         {content &&
           content.map((c) => (
@@ -41,7 +45,9 @@ function Movies() {
             />
           ))}
       </div>
-      <CustomPagination setPage={setPage} />
+      {numOfPages > 1 && (
+        <CustomPagination setPage={setPage} numberOfPages={numOfPages} />
+      )}
     </div>
   );
 }

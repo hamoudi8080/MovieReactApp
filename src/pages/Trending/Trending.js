@@ -3,9 +3,14 @@ import axios from "axios";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import "./Trending.css";
 import CustomPagination from "../../components/Pagination/CustomPagination";
+import Genres from "../../components/Genre/Genres";
+
 function Trending() {
   const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
+
+  const [selectedGenres, setSelectedGenra] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
@@ -23,7 +28,14 @@ function Trending() {
   return (
     <div>
       <span className="pageTitle">Trending</span>
-
+      <Genres
+        type="movie"
+        selectedGenres={selectedGenres}
+        setSelectedGenra={selectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+      />
       <div className="trending">
         {content &&
           content.map((c) => (
