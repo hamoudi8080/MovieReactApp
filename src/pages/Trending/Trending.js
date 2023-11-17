@@ -28,14 +28,7 @@ function Trending() {
   return (
     <div>
       <span className="pageTitle">Trending</span>
-      <Genres
-        type="movie"
-        selectedGenres={selectedGenres}
-        setSelectedGenra={selectedGenres}
-        genres={genres}
-        setGenres={setGenres}
-        setPage={setPage}
-      />
+     
       <div className="trending">
         {content &&
           content.map((c) => (
