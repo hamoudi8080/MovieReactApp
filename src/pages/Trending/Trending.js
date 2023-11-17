@@ -3,7 +3,7 @@ import axios from "axios";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import "./Trending.css";
 import CustomPagination from "../../components/Pagination/CustomPagination";
-import Genres from "../../components/Genre/Genres";
+import Genres from "../../components/Genres/Genres";
 
 function Trending() {
   const [content, setContent] = useState([]);
